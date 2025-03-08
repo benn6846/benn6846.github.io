@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Superhero Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: white;
+        }
+        th, td {
+            border: 2px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #333;
+            color: white;
+        }
+        img {
+            height: 100px;
+        }
+        tr:nth-child(even) {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Superhero Gallery</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Alias</th>
+            <th>Image</th>
+            <th>Superpower</th>
+            <th>Weakness</th>
+        </tr>
+        <tr>
+            <td>Peter Parker</td>
+            <td>Spider-Man</td>
+            <td><a href="images/spiderman.jpg"><img src="images/spiderman.jpg" alt="Spider-Man"></a></td>
+            <td>Wall-crawling, super strength, agility</td>
+            <td>Ethyl chloride, guilt</td>
+        </tr>
+        <tr>
+            <td>Bruce Wayne</td>
+            <td>Batman</td>
+            <td><a href="images/batman.jpg"><img src="images/batman.jpg" alt="Batman"></a></td>
+            <td>Genius intellect, martial arts, gadgets</td>
+            <td>Human limitations</td>
+        </tr>
+        <tr>
+            <td>Clark Kent</td>
+            <td>Superman</td>
+            <td><a href="images/superman.jpg"><img src="images/superman.jpg" alt="Superman"></a></td>
+            <td>Super strength, flight, heat vision</td>
+            <td>Kryptonite</td>
+        </tr>
+        <tr>
+            <td>Diana Prince</td>
+            <td>Wonder Woman</td>
+            <td><a href="images/wonderwoman.jpg"><img src="images/wonderwoman.jpg" alt="Wonder Woman"></a></td>
+            <td>Super strength, agility, divine weaponry</td>
+            <td>Binding by her own lasso</td>
+        </tr>
+    </table>
+</body>
+</html>
