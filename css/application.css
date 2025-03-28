@@ -1,27 +1,111 @@
+/* Define custom fonts */
+@font-face {
+    font-family: 'Arvo-Regular';
+    src: url('fonts/Arvo-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'OpenSans';
+    src: url('fonts/OpenSans.ttf');
+}
+
+/* Root styles */
+:root {
+    --primary-color: red;
+    --background-color: black;
+    --text-color: red;
+}
+
+/* General styles */
 body {
     font-family: 'OpenSans', sans-serif;
-    background-color: #f0f0f0;
+    background-color: var(--background-color);
+    color: var(--text-color);
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    background-repeat: repeat;
 }
 
-h1, h2 {
-    font-family: 'Arvo', sans-serif;
-    color: #333;
+/* Heading styles */
+h1 {
+    font-family: 'Arvo-Regular', serif;
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 42pt;
+    margin: 15px;
 }
 
-p {
-    font-size: 16px;
-    line-height: 1.5;
+h2 {
+    font-family: 'Arvo-Regular', serif;
+    text-align: center;
+    font-size: 35pt;
+    margin: 10px;
 }
 
-ul {
-    list-style-type: disc;
-    padding-left: 20px;
+/* Navigation styles */
+nav {
+    border: 1px solid rgb(200, 200, 200);
+    text-align: center;
+    width: 90vw;
+    margin: auto;
 }
 
-img {
-    width: 100%;
-    height: auto;
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: block;
+}
+
+nav ul li {
+    font-family: 'OpenSans', sans-serif;
+    font-size: 16pt;
     margin: 10px 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* Iframe styles */
+iframe {
+    border: 2px solid var(--primary-color);
+    margin-top: 50px;
+}
+
+/* Link return styles */
+.linkreturn a {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: var(--primary-color);
+}
+
+/* Table styles */
+th, td {
+    border: 2px solid rgb(200, 200, 200);
+    font-family: 'OpenSans', sans-serif;
+}
+
+th {
+    font-size: 18pt;
+}
+
+td {
+    font-size: 14pt;
+}
+
+td img {
+    height: 18pt;
+}
+
+td:nth-child(2), td:nth-child(3) {
+    font-size: 20pt;
+    text-align: center;
+}
+
+/* Section styles */
+section {
+    margin: 50px 25px;
 }
