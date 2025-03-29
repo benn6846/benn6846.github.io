@@ -1,8 +1,8 @@
 :root 
 {
-    background-color: rgb(48, 14, 14);
+    background-color: rgb(35, 53, 30);
     background-repeat: repeat;
-    color: rgb(218, 255, 10);
+    color: rgb(22, 155, 55);
 }
 @font-face {
     font-family: 'Arvo-Regular';
@@ -14,17 +14,15 @@
     src: url('fonts/OpenSans.ttf');
 }
 
-/* General styles */
+
 body {
     font-family: 'OpenSans', sans-serif;
     font-size: 16pt;
-    color: var(--text-color);
     margin: 0;
     padding: 0;
     background-repeat: repeat;
 }
 
-/* Heading styles */
 h1 {
     font-family: 'Arvo-Regular', serif;
     text-align: center;
@@ -39,7 +37,6 @@ h2 {
     margin: 10px;
 }
 
-/* Navigation styles */
 nav {
     border: 1px solid rgb(255, 255, 255);
     text-align: center;
@@ -64,13 +61,11 @@ nav ul li a {
     font-weight: bold;
 }
 
-/* Iframe styles */
 iframe {
     border: 2px solid rgb(255, 255, 255);
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
-/* Link return styles */
 .linkreturn a {
     display: block;
     text-align: center;
@@ -100,7 +95,9 @@ td:nth-child(2), td:nth-child(3) {
     text-align: center;
 }
 
-/* Section styles */
 section {
-    margin: 50px 25px;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
