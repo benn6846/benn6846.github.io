@@ -12,19 +12,18 @@ h1 {
   font-size: 2em;
 }
 
-/* Custom Color */
 p {
-  color: #2e8b57; /* Sea green color */
+  color: #2e8b57; 
 }
 
-/* Additional Rules */
+
 a {
-  color: #1e90ff; /* Dodger blue color */
+  color: #1e90ff;
   text-decoration: none;
 }
 
 ul {
-  list-style-type: disc;
+  list-style-type: square;
 }
 
 .container {
