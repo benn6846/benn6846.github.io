@@ -1,1 +1,26 @@
+:root
+{
+    --main-color: rgb(239, 27, 27);
+    color: rgb(0, 0, 0);
+    background-color: rgb(198, 190, 190);
+    text-align: center;
+    text-decoration: underline;
+}
 
+h1
+{
+    font-size: 45pt;
+    text-decoration: underline;
+    color: rgb(4, 0, 255);
+}
+
+img
+{
+    margin: auto;
+    display: block;
+}
+
+table
+{
+    margin: auto;
+}
