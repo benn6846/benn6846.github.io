@@ -1,39 +1,68 @@
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
-    margin: 0;
-    padding: 0;
-  }
-  
-  h1, h2 {
+@font-face
+{
+    font-family: 'Tech';
+    src: url(fonts/ShareTech.ttf);
+}
+
+:root
+{
+  --UNC-Blue: #013c65;
+  --UNC-Gold: #f6b000;
+  --UNC-Gray: #dd3a11;
+}
+body
+{
+    background-color: var(--UNC-Gray);
+}
+*
+{
+    color: var(--UNC-Blue);
     text-align: center;
-    color: #0056b3;
-  }
-  
-  nav ul {
-    display: flex;
-    justify-content: center;
+}
+h1
+{
+    font-size: calc(16pt + 6vw);
+    font-family: 'Tech';
+}
+h2
+{
+    font-size: 28pt;
+    font-family: 'Tech';
+}
+nav
+{
+    font-family: 'Tech';
+}
+#top
+{
+    border: 12px var(--UNC-Gold) solid;
+    margin: 8vw;
+    margin-top: 5px;
+}
+section
+{
+    border: 5px var(--UNC-Blue) solid;
+    margin: 18vw;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.date
+{
+    color: var(--UNC-Gold);
+    white-space: nowrap;
+}
+img
+{
+    width: 50%;
+    height: auto;
+}
+.date strong
+{
+    color: var(--UNC-Gold);
+    white-space: nowrap;
+}
+ul
+{
     list-style: none;
-    padding: 0;
-    background-color: #0056b3;
-  }
-  
-  nav ul li {
-    margin: 0 15px;
-  }
-  
-  nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  section {
-    margin: 20px auto;
-    padding: 20px;
-    max-width: 800px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
+    padding-left: 0px;
+}
