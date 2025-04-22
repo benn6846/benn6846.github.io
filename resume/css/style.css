@@ -13,7 +13,7 @@
   --primary-blue: #0d4d7e;
   --accent-gold: #eaff00;
   --highlight-red: rgb(247, 90, 17);
-  --neutral-gray: #919f9f; 
+  --neutral-gray: #b8bdbd; 
 }
 body
 {
@@ -24,10 +24,16 @@ body
     color: var(--neutral-gray);
     text-align: center;
 }
+
 h1
 {
-    font-size: calc(16pt + 6vw);
+    font-size: calc(12px + 7vw);
     font-family: 'Roboto';
+}
+
+table
+{
+    margin:auto;
 }
 h2
 {
@@ -40,7 +46,7 @@ nav
 }
 #top
 {
-    border: 12px var(--primary-blue) solid;
+    border: 12px var(--accent-gold) solid;
     margin: 8vw;
     margin-top: 5px;
 }
@@ -50,6 +56,7 @@ section
     margin: 18vw;
     margin-top: 10px;
     margin-bottom: 20px;
+   
 }
 img
 {
