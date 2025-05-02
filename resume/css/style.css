@@ -1,65 +1,67 @@
-@font-face
+@font-face 
 {
-    font-family: 'Tech';
-    src: url(fonts/ShareTech.ttf);
+    font-family: 'Roboto';
+    src: url(fonts/Roboto-VariableFont_wdth,wght.ttf);
 }
-
+@font-face 
+{
+    font-family: 'Montserrat';
+    src: url(fonts/Montserrat-Italic-VariableFont_wght.ttf);
+}
 :root
 {
-  --UNC-Blue: #013c65;
-  --UNC-Gold: #f6b000;
-  --UNC-Gray: #dd3a11;
+  --primary-blue: #0d4d7e;
+  --accent-gold: #eaff00;
+  --highlight-red: rgb(247, 90, 17);
+  --neutral-gray: #b8bdbd; 
 }
 body
 {
-    background-color: var(--UNC-Gray);
+    background-color: var(--primary-blue);
 }
 *
 {
-    color: var(--UNC-Blue);
+    color: var(--neutral-gray);
     text-align: center;
 }
+
 h1
 {
-    font-size: calc(16pt + 6vw);
-    font-family: 'Tech';
+    font-size: calc(12px + 7vw);
+    font-family: 'Roboto';
+}
+
+table
+{
+    margin:auto;
 }
 h2
 {
     font-size: 28pt;
-    font-family: 'Tech';
+    font-family: 'Roboto';
 }
 nav
 {
-    font-family: 'Tech';
+    font-family: 'Roboto';
 }
 #top
 {
-    border: 12px var(--UNC-Gold) solid;
+    border: 12px var(--accent-gold) solid;
     margin: 8vw;
     margin-top: 5px;
 }
 section
 {
-    border: 5px var(--UNC-Blue) solid;
+    border: 5px var(--accent-gold) solid;
     margin: 18vw;
     margin-top: 10px;
     margin-bottom: 20px;
-}
-.date
-{
-    color: var(--UNC-Gold);
-    white-space: nowrap;
+   
 }
 img
 {
     width: 50%;
     height: auto;
-}
-.date strong
-{
-    color: var(--UNC-Gold);
-    white-space: nowrap;
 }
 ul
 {

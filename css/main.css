@@ -3,17 +3,19 @@ body {
 }
 
 img {
-  width: 100%;
+ max-width: 100%;
+  height: auto;
   border-radius: 5px;
 }
 
 h1 {
   color: #333; 
-  font-size: 2em;
+  font-size: 6vw;
 }
 
 p {
-  color: #2e8b57; 
+  color: #2e8b57;
+  font-size: 120%;
 }
 
 a {
@@ -26,7 +28,7 @@ ul {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 100px;
   margin: 0 auto;
 }
 
