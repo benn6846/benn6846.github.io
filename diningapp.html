@@ -2,502 +2,112 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Campus Marketplace</title>
-  <style>
-    /* Reset & base */
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      background: #f5f7fa;
-      color: #333;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-bottom: 50px;
-    }
-    a {
-      color: #1d4ed8;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    /* Container */
-    .container {
-      max-width: 960px;
-      margin: 20px auto;
-      padding: 20px;
-      width: 100%;
-    }
-    /* Header */
-    header {
-      text-align: center;
-      padding-bottom: 15px;
-      border-bottom: 1px solid #ddd;
-      margin-bottom: 15px;
-    }
-    header h1 {
-      margin: 0;
-      color: #2563eb;
-      font-size: 2rem;
-    }
-    header p {
-      color: #555;
-      margin-top: 5px;
-      font-size: 1.1rem;
-    }
-
-    /* Filters */
-    .filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 20px 0 30px;
-      justify-content: center;
-      align-items: center;
-    }
-    .filters input[type="text"],
-    .filters select,
-    .filters input[type="number"] {
-      padding: 8px 12px;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      min-width: 120px;
-      max-width: 250px;
-      flex-grow: 1;
-    }
-    label.filter-label {
-      font-weight: 600;
-      margin-right: 6px;
-      white-space: nowrap;
-    }
-
-    /* Listings grid */
-    .listings {
-      display: grid;
-      grid-template-columns: repeat(auto-fill,minmax(280px,1fr));
-      gap: 15px;
-    }
-    /* Listing card */
-    .listing {
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: box-shadow 0.3s ease;
-      position: relative;
-      min-height: 380px;
-    }
-    .listing.featured {
-      border: 3px solid #facc15; /* yellow border */
-      box-shadow: 0 4px 15px rgb(250 204 21 / 0.6);
-    }
-    .listing:hover {
-      box-shadow: 0 6px 20px rgb(0 0 0 / 0.2);
-    }
-    .listing img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      background: #ddd;
-      border-bottom: 1px solid #eee;
-    }
-    .listing-content {
-      padding: 12px 15px;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    .listing-title {
-      font-weight: 600;
-      font-size: 1.15rem;
-      margin-bottom: 6px;
-      flex-grow: 0;
-    }
-    .listing-description {
-      font-size: 0.9rem;
-      color: #555;
-      margin-bottom: 12px;
-      flex-grow: 1;
-      overflow: auto;
-    }
-    .listing-meta {
-      font-size: 0.85rem;
-      color: #777;
-      margin-bottom: 6px;
-    }
-    .listing-price {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: #16a34a;
-      margin-bottom: 12px;
-    }
-    .featured-badge {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: #facc15;
-      color: #92400e;
-      font-weight: 700;
-      padding: 3px 8px;
-      border-radius: 12px;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      user-select: none;
-    }
-    .buy-btn {
-      background: #2563eb;
-      border: none;
-      padding: 10px;
-      border-radius: 6px;
-      color: white;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      width: 100%;
-    }
-    .buy-btn:hover {
-      background: #1e40af;
-    }
-
-    /* Post form */
-    .post-form {
-      background: white;
-      border-radius: 10px;
-      padding: 20px;
-      margin-top: 40px;
-      box-shadow: 0 2px 10px rgb(0 0 0 / 0.1);
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .post-form h2 {
-      margin-top: 0;
-      margin-bottom: 15px;
-      color: #2563eb;
-      text-align: center;
-    }
-    .post-form label {
-      display: block;
-      font-weight: 600;
-      margin-bottom: 6px;
-      margin-top: 12px;
-    }
-    .post-form input[type="text"],
-    .post-form input[type="number"],
-    .post-form select,
-    .post-form textarea {
-      width: 100%;
-      padding: 8px 10px;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      resize: vertical;
-    }
-    .post-form textarea {
-      min-height: 80px;
-    }
-    .post-form button {
-      margin-top: 18px;
-      background: #2563eb;
-      color: white;
-      border: none;
-      padding: 12px 20px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      width: 100%;
-      transition: background 0.3s ease;
-    }
-    .post-form button:hover {
-      background: #1e40af;
-    }
-
-    /* Modal styles */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.5);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-    }
-    .modal-overlay.active {
-      display: flex;
-    }
-    .modal {
-      background: white;
-      border-radius: 10px;
-      max-width: 450px;
-      width: 90%;
-      padding: 20px 25px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      position: relative;
-      max-height: 80vh;
-      overflow-y: auto;
-    }
-    .modal h3 {
-      margin-top: 0;
-      color: #2563eb;
-    }
-    .modal-close {
-      position: absolute;
-      top: 12px;
-      right: 15px;
-      background: transparent;
-      border: none;
-      font-size: 1.5rem;
-      font-weight: 700;
-      cursor: pointer;
-      color: #666;
-    }
-    .modal-close:hover {
-      color: #222;
-    }
-    .payment-methods {
-      margin-top: 15px;
-    }
-    .payment-methods button {
-      margin-top: 10px;
-      padding: 12px;
-      border-radius: 6px;
-      border: none;
-      font-weight: 600;
-      cursor: pointer;
-      width: 100%;
-      transition: background 0.3s ease;
-    }
-    .apple-pay-btn {
-      background: black;
-      color: white;
-    }
-    .apple-pay-btn:hover {
-      background: #333;
-    }
-    .credit-card-btn {
-      background: #2563eb;
-      color: white;
-    }
-    .credit-card-btn:hover {
-      background: #1e40af;
-    }
-    .payment-status {
-      margin-top: 15px;
-      font-weight: 600;
-      color: green;
-      min-height: 24px;
-    }
-
-    /* Responsive */
-    @media (max-width: 480px) {
-      .filters {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      .filters input[type="text"],
-      .filters select,
-      .filters input[type="number"] {
-        max-width: 100%;
-        flex-grow: 1;
-      }
-      .listing {
-        min-height: auto;
-      }
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Job Recruiter</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>Campus Marketplace</h1>
-      <p>Buy &amp; Sell Textbooks, Dorm Items, Shoes, and More</p>
-    </header>
+  <header>
+    <h1>Smart Job Recruiter</h1>
+    <nav>
+      <a href="#login">Login</a>
+      <a href="#register">Register</a>
+    </nav>
+  </header>
 
-    <section class="filters" aria-label="Filter listings">
-      <label class="filter-label" for="searchInput">Search:</label>
-      <input type="text" id="searchInput" placeholder="Search listings..." aria-describedby="searchHelp" />
-      
-      <label class="filter-label" for="categorySelect">Category:</label>
-      <select id="categorySelect" aria-describedby="categoryHelp" multiple size="4" style="min-width: 200px;">
-        <option value="textbooks" selected>Textbooks</option>
-        <option value="dorm" selected>Dorm Items</option>
-        <option value="shoes" selected>Shoes</option>
-        <option value="electronics" selected>Electronics</option>
-        <option value="furniture" selected>Furniture</option>
-        <option value="clothing" selected>Clothing</option>
-      </select>
-
-      <label class="filter-label" for="priceMinInput">Price Min ($):</label>
-      <input type="number" id="priceMinInput" min="0" placeholder="0" />
-
-      <label class="filter-label" for="priceMaxInput">Price Max ($):</label>
-      <input type="number" id="priceMaxInput" min="0" placeholder="Any" />
-    </section>
-
-    <section class="listings" id="listingsContainer" aria-live="polite" aria-atomic="true">
-      <!-- Listings inserted here -->
-    </section>
-
-    <section class="post-form" aria-label="Post a new listing">
-      <h2>Post a New Listing</h2>
-      <form id="postForm">
-        <label for="titleInput">Title *</label>
-        <input type="text" id="titleInput" required placeholder="E.g., Calculus Textbook" aria-required="true" />
-
-        <label for="descriptionInput">Description</label>
-        <textarea id="descriptionInput" placeholder="Add more details..."></textarea>
-
-        <label for="categoryInput">Category *</label>
-        <select id="categoryInput" required aria-required="true">
-          <option value="">-- Select Category --</option>
-          <option value="textbooks">Textbooks</option>
-          <option value="dorm">Dorm Items</option>
-          <option value="shoes">Shoes</option>
-          <option value="electronics">Electronics</option>
-          <option value="furniture">Furniture</option>
-          <option value="clothing">Clothing</option>
-        </select>
-
-        <label for="priceInput">Price ($) *</label>
-        <input type="number" id="priceInput" min="0" step="0.01" required placeholder="E.g., 50" aria-required="true" />
-
-        <label for="featuredInput">
-          <input type="checkbox" id="featuredInput" />
-          Feature this listing (highlighted)
-        </label>
-
-        <label for="imageInput">Image URL</label>
-        <input type="text" id="imageInput" placeholder="Optional - paste image URL here" />
-
-        <button type="submit">Post Listing</button>
+  <main>
+    <section id="register">
+      <h2>Create an Account</h2>
+      <form id="registerForm">
+        <input type="text" placeholder="Full Name" required />
+        <input type="email" placeholder="Email" required />
+        <input type="password" placeholder="Password" required />
+        <button type="submit">Sign Up</button>
       </form>
     </section>
-  </div>
 
-  <!-- Buy Modal -->
-  <div class="modal-overlay" id="buyModal" role="dialog" aria-modal="true" aria-labelledby="buyModalTitle" tabindex="-1">
-    <div class="modal">
-      <button class="modal-close" id="modalCloseBtn" aria-label="Close">&times;</button>
-      <h3 id="buyModalTitle">Buy Item</h3>
-      <div id="buyItemDetails"></div>
+    <section id="resume-upload">
+      <h2>Upload Your Resume</h2>
+      <form id="resumeForm">
+        <input type="file" accept=".pdf,.docx" />
+        <button type="submit">Upload</button>
+        <p>Or skip and use our chatbot</p>
+      </form>
+    </section>
 
-      <div class="payment-methods" id="paymentMethods">
-        <button class="apple-pay-btn" id="applePayBtn" type="button">Pay with Apple Pay</button>
-        <button class="credit-card-btn" id="creditCardBtn" type="button">Pay with Credit Card</button>
+    <section id="chatbot">
+      <h2>Chat with RecruiterBot</h2>
+      <div id="chatWindow">
+        <!-- Chat interface here -->
       </div>
+      <input type="text" placeholder="Ask me anything..." />
+      <button>Send</button>
+    </section>
 
-      <div id="paymentStatus" class="payment-status" role="alert" aria-live="assertive"></div>
-    </div>
-  </div>
+    <section id="job-search">
+      <h2>Smart Job Search</h2>
+      <input type="text" placeholder="Search jobs by keyword" />
+      <select>
+        <option value="remote">Remote</option>
+        <option value="onsite">On-site</option>
+        <option value="hybrid">Hybrid</option>
+      </select>
+      <button>Search</button>
+      <div id="jobResults">
+        <!-- Job results will appear here -->
+      </div>
+    </section>
 
-  <script>
-    // Initial sample listings with extended categories
-    const initialListings = [
-      {
-        id: 1,
-        title: "Calculus Textbook - Stewart 8th Edition",
-        description: "Used, good condition.",
-        category: "textbooks",
-        price: 50,
-        featured: true,
-        image:
-          "https://images-na.ssl-images-amazon.com/images/I/41TAiyL2-yL._SX396_BO1,204,203,200_.jpg",
-      },
-      {
-        id: 2,
-        title: "Queen Size Bed Sheets",
-        description: "Blue patterned sheets, almost new.",
-        category: "dorm",
-        price: 25,
-        featured: false,
-        image:
-          "https://cdn11.bigcommerce.com/s-vm6xpw/images/stencil/1280x1280/products/159/1291/bed-sheet-set-blue__35516.1548944876.jpg?c=2",
-      },
-      {
-        id: 3,
-        title: "Organic Chemistry Textbook",
-        description: "Some highlighting inside.",
-        category: "textbooks",
-        price: 40,
-        featured: false,
-        image:
-          "https://images-na.ssl-images-amazon.com/images/I/41qWog6Zk0L._SX258_BO1,204,203,200_.jpg",
-      },
-      {
-        id: 4,
-        title: "Desk Lamp",
-        description: "LED with adjustable brightness.",
-        category: "dorm",
-        price: 15,
-        featured: true,
-        image:
-          "https://cdn.shopify.com/s/files/1/0285/3159/8896/products/USB-LED-Desk-Lamp-4_1200x1200.jpg?v=1621341164",
-      },
-      {
-        id: 5,
-        title: "Nike Running Shoes",
-        description: "Size 10, barely used.",
-        category: "shoes",
-        price: 75,
-        featured: false,
-        image:
-          "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/bb29a0a6-8dc6-4c16-9230-0f45b7d1362a/air-zoom-pegasus-38-road-running-shoes-ZVTB6C.png",
-      },
-      {
-        id: 6,
-        title: "Bluetooth Headphones",
-        description: "Noise-cancelling, good battery life.",
-        category: "electronics",
-        price: 60,
-        featured: false,
-        image:
-          "https://m.media-amazon.com/images/I/71a4ecPocUL._AC_SL1500_.jpg",
-      }
-    ];
+    <section id="recommendations">
+      <h2>Recommended Jobs</h2>
+      <ul>
+        <li>Exact Matches</li>
+        <li>Similar Roles</li>
+        <li>Alternative Opportunities</li>
+      </ul>
+    </section>
 
-    // Load listings from localStorage or default
-    let listings = JSON.parse(localStorage.getItem('campusListings')) || [...initialListings];
+    <section id="alerts">
+      <h2>Email Job Alerts</h2>
+      <form>
+        <label>
+          <input type="checkbox" /> Daily Alerts
+        </label>
+        <label>
+          <input type="checkbox" /> Weekly Alerts
+        </label>
+      </form>
+    </section>
 
-    // Elements
-    const listingsContainer = document.getElementById("listingsContainer");
-    const searchInput = document.getElementById("searchInput");
-    const categorySelect = document.getElementById("categorySelect");
-    const priceMinInput = document.getElementById("priceMinInput");
-    const priceMaxInput = document.getElementById("priceMaxInput");
-    const postForm = document.getElementById("postForm");
+    <section id="saved-jobs">
+      <h2>Saved Jobs</h2>
+      <ul>
+        <!-- List of saved jobs -->
+      </ul>
+    </section>
 
-    // Modal elements
-    const buyModal = document.getElementById("buyModal");
-    const modalCloseBtn = document.getElementById("modalCloseBtn");
-    const buyItemDetails = document.getElementById("buyItemDetails");
-    const applePayBtn = document.getElementById("applePayBtn");
-    const creditCardBtn = document.getElementById("creditCardBtn");
-    const paymentStatus = document.getElementById("paymentStatus");
+    <section id="application-tracker">
+      <h2>Application Tracker</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Company</th>
+            <th>Role</th>
+            <th>Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Application data -->
+        </tbody>
+      </table>
+    </section>
+  </main>
 
-    let currentBuyItem = null;
+  <footer>
+    <p>&copy; 2025 Smart Job Recruiter</p>
+  </footer>
 
-    // Save listings to localStorage
-    function saveListings() {
-      localStorage.setItem('campusListings', JSON.stringify(listings));
-    }
-
-    // Render listings based on filters
-    function renderListings() {
-      const searchTerm = searchInput.value.toLowerCase();
-      const selectedCategories = Array.from(categorySelect.selectedOptions).map(opt => opt.value);
-      const priceMin = parseFloat(priceMinInput.value);
-      const priceMax = parseFloat(priceMaxInput.value);
-
-      const filtered = listings.filter(item => {
-        // Category filter
-        const inCategory = selectedCategories.length === 0 || selectedCategories
+  <script src="app.js"></script>
+</body>
+</html>
