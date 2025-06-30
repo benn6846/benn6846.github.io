@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,15 +8,11 @@
   <link rel="stylesheet" href="style.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <script defer>
-    document.addEventListener('DOMContentLoaded', () => {
-      const browseBtn = document.getElementById('browse-btn');
-      const postBtn = document.getElementById('post-btn');
-
-      browseBtn.addEventListener('click', () => {
-        window.location.href = 'listings.html'; // Navigate to listings page
-      });
-      postBtn.addEventListener('click', () => {
-        window.location.href = 'post-item.html'; // Navigate to post item page
+    document.addEventListener("DOMContentLoaded", () => {
+      const browseBtn = document.getElementById("browse-btn");
+      const postBtn = document.getElementById("post-btn");
+      browseBtn.addEventListener("click", () => alert("Browse feature coming soon!"));
+      postBtn.addEventListener("click", () => alert("Post item feature coming soon!"));
     });
   </script>
 </head>
@@ -27,6 +24,7 @@
       <p class="tagline">Buy & Sell Textbooks + Dorm Items. Safe. Local. For Students.</p>
       <div class="cta-buttons">
         <button id="browse-btn">Browse Listings</button>
+       <a href="browse.html" class="button">Browse Listings</a>
         <button id="post-btn" class="highlight">Post an Item</button>
       </div>
     </div>
