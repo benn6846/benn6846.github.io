@@ -110,3 +110,8 @@ footer {
   width: 100px;
   margin-top: 10px;
 }
+.back-button
+{
+color: white;
+text-decoration: none;
+}
