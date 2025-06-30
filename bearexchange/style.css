@@ -1,112 +1,57 @@
-/* Font and base styling */
-body {
-  margin: 0;
-  padding: 0;
+/* Form Section (for post-item.html) */
+.form-section {
+  max-width: 600px;
+  margin: 2rem auto 4rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.form-section label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 700;
+  color: #0047AB;
+}
+
+.form-section input,
+.form-section textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.4rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
   font-family: 'Inter', sans-serif;
-  background-color: #f5f9ff;
+  font-size: 1rem;
   color: #1a1a1a;
+  box-sizing: border-box;
 }
 
-h1, h2, h3 {
-  margin: 0;
-}
-
-/* Hero Section */
-.hero {
-  background: linear-gradient(to right, #0047AB, #1E90FF);
-  color: white;
-  padding: 80px 20px;
-  text-align: center;
-  position: relative;
-}
-
-.overlay {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.logo {
-  width: 80px;
-  margin-bottom: 20px;
-  height: auto;
-}
-
-.tagline {
-  font-size: 1.25rem;
-  margin: 10px 0 30px;
-}
-
-.cta-buttons button {
-  padding: 12px 24px;
-  margin: 0 10px;
+.form-section button {
+  margin-top: 1.5rem;
+  background-color: #ffc107;
+  color: #003366;
+  padding: 0.75rem 1.5rem;
   border: none;
   border-radius: 8px;
-  background-color: white;
-  color: #0047AB;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.cta-buttons button.highlight {
+.form-section button:hover {
+  background-color: #e6b806;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Back Button (for browse.html and post-item.html) */
+.back-button {
+  display: inline-block;
+  margin: 1rem auto;
+  padding: 10px 20px;
   background-color: #ffc107;
   color: #003366;
-}
-
-.cta-buttons button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* Main content */
-.content {
-  padding: 40px 20px;
-  max-width: 1000px;
-  margin: auto;
-}
-
-.featured h2 {
-  text-align: center;
-  margin-bottom: 30px;
-  color: #003366;
-  font-size: 2rem;
-}
-
-.listing-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
-}
-
-.card {
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
-}
-
-.card:hover {
-  transform: scale(1.03);
-}
-
-.card h3 {
-  color: #0047AB;
-  margin-bottom: 8px;
-}
-
-/* Footer */
-footer {
-  background-color: #003366;
-  color: white;
-  text-align: center;
-  padding: 20px;
-  margin-top: 60px;
-}
-
-.logo-small {
-  width: 100px;
-  margin-top: 10px;
-}
+  border-radius: 8px;
+  text-decoration: none;
