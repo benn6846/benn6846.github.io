@@ -57,9 +57,18 @@
     <p>&copy; 2025 Campus Marketplace · Built for students by students</p>
     <img src="images/Marketplace.png" alt="Site Logo" class="logo-small"/>
   </footer>
-  <script>
-  document.getElementById("browse-btn").addEventListener("click", () => {
-    window.location.href = "browse.html";
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const browseBtn = document.getElementById("browse-btn");
+    const postBtn = document.getElementById("post-btn");
+
+    browseBtn.addEventListener("click", () => {
+      window.location.href = "browse.html";
+    });
+
+    postBtn.addEventListener("click", () => {
+      window.location.href = "post-item.html";
+    });
   });
 </script>
 </body>
