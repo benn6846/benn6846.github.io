@@ -21,6 +21,19 @@
   </script>
 </head>
 <body>
+  <nav class="navbar">
+  <div class="dropdown">
+    <button class="dropbtn" id="menu-toggle">☰ Menu</button>
+    <div class="dropdown-content" id="dropdown-menu">
+      <a href="index.html">🏠 Home</a>
+      <a href="listings.html">📂 Browse Listings</a>
+      <a href="post-item.html">➕ Post an Item</a>
+      <a href="about.html">ℹ️ About</a>
+      <a href="contact.html">✉️ Contact</a>
+      <a href="profile.html">👤 Profile</a>
+    </div>
+  </div>
+</nav>
   <header class="hero">
     <div class="overlay">
       <img src="images/UNCOBear.png" alt="University Logo" class="logo"/>
@@ -32,27 +45,29 @@
       </div>
     </div>
   </header>
-
   <main class="content">
-    <section class="featured">
-      <h2>🔥 Hot Listings</h2>
-      <div class="listing-grid">
-        <div class="card">
-          <h3>📘 Intro to Psychology</h3>
-          <p>$20 · Good condition</p>
-        </div>
-        <div class="card">
-          <h3>🪑 Dorm Chair</h3>
-          <p>$10 · Slightly used</p>
-        </div>
-        <div class="card">
-          <h3>🔌 Mini Fridge</h3>
-          <p>$50 · Like new</p>
-        </div>
+  <section class="featured">
+    <h2>🔥 Hot Listings</h2>
+    <div class="listing-grid">
+      <div class="card">
+        <img src="images/Introtopschologyt.jpg" alt="Intro to Psychology Book" class="listing-img">
+        <h3>📘 Intro to Psychology</h3>
+        <p>$20 · Good condition</p>
       </div>
-    </section>
-  </main>
+      <div class="card">
+        <img src="images/dormchair.jpg" alt="Dorm Chair" class="listing-img">
+        <h3>🪑 Dorm Chair</h3>
+        <p>$10 · Slightly used</p>
+      </div>
 
+      <div class="card">
+        <img src="images/minifridge.jpg" alt="Mini Fridge" class="listing-img">
+        <h3>🔌 Mini Fridge</h3>
+        <p>$50 · Like new</p>
+      </div>
+    </div>
+  </section>
+</main>
   <footer>
     <p>&copy; 2025 Campus Marketplace · Built for students by students</p>
     <img src="images/Marketplace.png" alt="Site Logo" class="logo-small"/>
