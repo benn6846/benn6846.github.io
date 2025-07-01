@@ -17,6 +17,13 @@ body {
 
 h1, h2, h3 {
   margin: 0;
+  text-align: ;
+}
+
+h2
+{
+  text-align: center;
+  margin: 15px; 
 }
 
 /* ---------- Hero Section ---------- */
