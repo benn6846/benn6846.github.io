@@ -294,6 +294,7 @@ footer {
   display: block;
 }
 
+/* Navbar Container */
 .navbar {
   position: absolute;
   top: 20px;
@@ -323,6 +324,7 @@ footer {
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
   border-radius: 8px;
   overflow: hidden;
+  flex-direction: column;
 }
 
 /* Links Inside Dropdown */
@@ -338,7 +340,23 @@ footer {
   background-color: #f0f0f0;
 }
 
-/* Show Dropdown on Hover */
-.dropdown:hover .dropdown-content {
-  display: block;
+/* Show Dropdown when toggled */
+.show {
+  display: flex;
+}
+
+/* Mobile Styles */
+@media (max-width: 600px) {
+  .dropdown-content {
+    min-width: 100vw;
+    right: 0;
+    top: 50px;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .dropbtn {
+    padding: 12px 20px;
+    font-size: 18px;
+  }
 }
