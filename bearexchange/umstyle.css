@@ -1,0 +1,284 @@
+/* ---------- Color Palette for Michigan ---------- */
+:root {
+  --primary-blue: #00274C;
+  --accent-maize: #FFCB05;
+  --light-bg: #f5f9ff;
+  --text-dark: #1a1a1a;
+}
+
+/* ---------- Base Styles ---------- */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--light-bg);
+  color: var(--text-dark);
+}
+
+h1, h2, h3 {
+  margin: 0;
+}
+
+/* ---------- Hero Section ---------- */
+.hero {
+  background: linear-gradient(to right, var(--primary-blue), #001f3f);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+  position: relative;
+}
+
+.small-hero {
+  padding: 40px 20px;
+}
+
+.overlay {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.logo {
+  width: 80px;
+  margin-bottom: 20px;
+  height: auto;
+}
+
+.tagline {
+  font-size: 1.25rem;
+  margin: 10px 0 30px;
+}
+
+/* ---------- Buttons ---------- */
+.cta-buttons button,
+.button {
+  display: inline-block;
+  padding: 12px 24px;
+  margin: 0 10px 10px 0;
+  border: none;
+  border-radius: 8px;
+  background-color: white;
+  color: var(--primary-blue);
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.cta-buttons button.highlight,
+.button.highlight {
+  background-color: var(--accent-maize);
+  color: var(--primary-blue);
+}
+
+.cta-buttons button:hover,
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ---------- Main Content ---------- */
+.content {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* ---------- Listing Grid ---------- */
+.listing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* ---------- Cards ---------- */
+.card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card h3 {
+  color: var(--primary-blue);
+  margin-bottom: 8px;
+}
+
+.listing-img {
+  width: 100%;
+  max-height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* ---------- Form Section ---------- */
+.form-section {
+  max-width: 600px;
+  margin: 2rem auto 4rem;
+  padding: 1.5rem 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.form-section label {
+  display: block;
+  margin-top: 1.2rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+}
+
+.form-section input,
+.form-section textarea {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  margin-top: 0.3rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: var(--text-dark);
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+.form-section input[type="file"] {
+  padding: 0.3rem 0;
+}
+
+.form-section button {
+  margin-top: 1.8rem;
+  background-color: var(--accent-maize);
+  color: var(--primary-blue);
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-section button:hover {
+  background-color: #e6b806;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* ---------- Footer ---------- */
+footer {
+  background-color: var(--primary-blue);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 60px;
+}
+
+.logo-small {
+  width: 100px;
+  margin-top: 10px;
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  background-color: var(--primary-blue);
+  padding: 10px 20px;
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.dropbtn {
+  background-color: var(--accent-maize);
+  color: var(--primary-blue);
+  padding: 10px 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: white;
+  min-width: 180px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  border-radius: 8px;
+  overflow: hidden;
+  flex-direction: column;
+}
+
+.dropdown-content a {
+  color: var(--primary-blue);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-weight: 500;
+}
+
+.dropdown-content a:hover {
+  background-color: #f0f0f0;
+}
+
+.show {
+  display: flex;
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 600px) {
+  .dropdown-content {
+    min-width: 100vw;
+    right: 0;
+    top: 50px;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .dropbtn {
+    padding: 12px 20px;
+    font-size: 18px;
+  }
+}
+
+/* ---------- Contact Form ---------- */
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  max-width: 500px;
+  padding: 10px;
+  margin: 8px 0 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.contact-form button {
+  padding: 10px 20px;
+  background-color: var(--primary-blue);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background-color: #003f7f;
+}
