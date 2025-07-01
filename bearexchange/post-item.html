@@ -48,6 +48,23 @@
   document.getElementById('back-btn').addEventListener('click', () => {
     window.location.href = 'index.html';
   });
+  document.querySelector("form").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const item = {
+      name: this.itemName.value,
+      price: this.price.value,
+      description: this.description.value,
+      image: this.image.value // For now, just the filename or URL
+    };
+
+    let listings = JSON.parse(localStorage.getItem("userListings")) || [];
+    listings.push(item);
+    localStorage.setItem("userListings", JSON.stringify(listings));
+
+    alert("Item posted!");
+    window.location.href = "profile.html";
+  });
 </script>
 </body>
 </html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Your Profile - Campus Marketplace</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .profile-container {
+      max-width: 800px;
+      margin: auto;
+      padding: 2rem;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .profile-info {
+      flex: 1;
+    }
+
+    .profile-img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #003366;
+    }
+
+    .logout-btn {
+      padding: 8px 16px;
+      background-color: #c0392b;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .listing-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      margin-top: 1rem;
+    }
+
+    .card {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 1rem;
+      background-color: #fafafa;
+      text-align: center;
+    }
+
+    .listing-img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Optional: Include your nav bar here -->
+
+  <header class="hero">
+    <div class="overlay">
+      <h1>👤 Your Profile</h1>
+      <p class="tagline">Manage your listings, info, and account settings</p>
+    </div>
+  </header>
+
+  <main class="content">
+    <div class="profile-container">
+      <div class="profile-header">
+        <div class="profile-info">
+          <h2 id="profile-name">John Doe</h2>
+          <p id="profile-email"><strong>Email:</strong> john.doe@example.com</p>
+          <p><strong>School:</strong> University of Northern Colorado</p>
+        </div>
+        <img src="images/johncena.png" alt="Profile" class="profile-img" />
+   
+      </div>
+      <button class="logout-btn" onclick="logout()">Logout</button>
+
+      <hr style="margin: 2rem 0;"/>
+
+      <section>
+        <h2>Your Listings</h2>
+        <div id="listings-container" class="listing-grid"></div>
+        <p id="no-listings" style="margin-top:1rem;">You haven't posted anything yet. <a href="post-item.html">Post an item</a>.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Campus Marketplace · Built for students by students</p>
+  </footer>
+
+  <script>
+    // Load user info from localStorage
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      document.getElementById("profile-name").textContent = user.username || "Student";
+      document.getElementById("profile-email").textContent = user.email;
+    }
+
+    // Load listings
+    const listings = JSON.parse(localStorage.getItem("userListings")) || [];
+    const listingsContainer = document.getElementById("listings-container");
+    const noListings = document.getElementById("no-listings");
+
+    if (listings.length > 0) {
+      noListings.style.display = "none";
+      listings.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <img src="${item.image || 'images/default-item.jpg'}" alt="${item.name}" class="listing-img" />
+          <h3>${item.name}</h3>
+          <p>${item.price} · ${item.description}</p>
+        `;
+        listingsContainer.appendChild(card);
+      });
+    }
+
+    function logout() {
+      alert("Logged out!");
+      localStorage.removeItem("user");
+      window.location.href = "index.html";
+    }
+  </script>
+
+</body>
+</html>
