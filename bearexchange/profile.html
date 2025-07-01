@@ -125,12 +125,14 @@
         card.innerHTML = `
           <img src="${item.image || 'images/default-item.jpg'}" alt="${item.name}" class="listing-img" />
           <h3>${item.name}</h3>
-          <p>${item.price} · ${item.description}</p>
-        `;
+          <p>${item.price} · ${item.description}</p>`;
         listingsContainer.appendChild(card);
       });
     }
-
+    else {
+      noListings.style.display = "block";
+    }
+    // Logout function
     function logout() {
       alert("Logged out!");
       localStorage.removeItem("user");
