@@ -349,3 +349,21 @@ footer {
   }
 
 }
+.close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  font-size: 28px;
+  color: #aaa;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  z-index: 1100;
+}
+
+.close:hover,
+.close:focus {
+  color: #0047AB;
+  outline: none;
+}

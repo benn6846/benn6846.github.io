@@ -145,10 +145,13 @@
       modal.style.display = "none";
     }
   }
+ document.querySelector('.close').addEventListener('click', () => {
+  document.getElementById('item-modal').style.display = 'none';
+});
 </script>
 <div id="item-modal" class="modal">
   <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
+    <button class="close" aria-label="Close modal" onclick="closeModal()">&times;</button>
     <img id="modal-img" src="" alt="Item Image" class="modal-img">
     <h3 id="modal-title"></h3>
     <p id="modal-price"></p>
