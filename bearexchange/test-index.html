@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+ <title>Campus Marketplace</title>
+ <link rel="stylesheet" href="style.css"/>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <script defer>
+   document.addEventListener('DOMContentLoaded', () => {
+     const browseBtn = document.getElementById('browse-btn');
+     const postBtn = document.getElementById('post-btn');
+
+
+     browseBtn.addEventListener('click', () => {
+       window.location.href = 'listings.html'; // Navigate to listings page
+     });
+     postBtn.addEventListener('click', () => {
+       window.location.href = 'post-item.html'; // Navigate to post item page
+   });
+ </script>
+</head>
+<body>
+ <nav class="navbar">
+ <div class="dropdown">
+   <button class="dropbtn" id="menu-toggle">☰ Menu</button>
+   <div class="dropdown-content" id="dropdown-menu">
+     <a href="profile.html">👤 Profile</a>
+     <a href="about.html">ℹ️ About</a>
+     <a href="contact.html">✉️ Contact</a>
+   </div>
+ </div>
+</nav>
+
+
+ <header class="hero">
+   <div class="overlay">
+     <img src="images/UNCOBear.png" alt="University Logo" class="logo"/>
+     <h1>📚 Campus Marketplace 🛍️</h1>
+     <p class="tagline">Buy & Sell Textbooks + Dorm Items. Safe. Local. For Students.</p>
+     <div class="cta-buttons">
+       <button id="browse-btn">Browse Listings</button>
+       <button id="post-btn" class="highlight">Post an Item</button>
+     </div>
+   </div>
+ </header>
+ <main class="content">
+ <section class="featured">
+   <h2>🔥 Hot Listings</h2>
+<div class="listing-grid">
+  <div class="card" onclick="openModal('psychology')">
+    <img src="images/Introtopschologyt.jpg" alt="Intro to Psychology Book" class="listing-img">
+    <h3>📘 Intro to Psychology</h3>
+    <p>$20 · Good condition</p>
+  </div>
+  <div class="card" onclick="openModal('chair')">
+    <img src="images/dormchair.jpg" alt="Dorm Chair" class="listing-img">
+    <h3>🪑 Dorm Chair</h3>
+    <p>$10 · Slightly used</p>
+  </div>
+  <div class="card" onclick="openModal('fridge')">
+    <img src="images/minifridge.jpg" alt="Mini Fridge" class="listing-img">
+    <h3>🔌 Mini Fridge</h3>
+    <p>$50 · Like new</p>
+  </div>
+</div>
+ </section>
+</main>
+ <footer>
+   <p>&copy; 2025 Campus Marketplace · Built for students by students</p>
+   <img src="images/Marketplace.png" alt="Site Logo" class="logo-small"/>
+ </footer>
+<script>
+ document.addEventListener('DOMContentLoaded', () => {
+   const browseBtn = document.getElementById("browse-btn");
+   const postBtn = document.getElementById("post-btn");
+
+
+   browseBtn.addEventListener("click", () => {
+     window.location.href = "browse.html";
+   });
+
+
+   postBtn.addEventListener("click", () => {
+     window.location.href = "post-item.html";
+   });
+ });
+</script>
+<script>
+ document.addEventListener("DOMContentLoaded", () => {
+   const menuToggle = document.getElementById("menu-toggle");
+   const dropdownMenu = document.getElementById("dropdown-menu");
+
+
+   menuToggle.addEventListener("click", () => {
+     dropdownMenu.classList.toggle("show");
+   });
+   // Close menu if clicked outside
+   window.addEventListener("click", function (e) {
+     if (!e.target.matches('.dropbtn')) {
+       dropdownMenu.classList.remove('show');
+     }
+   });
+ });
+  const modalData = {
+    psychology: {
+      img: 'images/Introtopschologyt.jpg',
+      title: '📘 Intro to Psychology',
+      price: '$20 · Good condition',
+      description: 'A well-kept textbook for PSY101. No markings inside.'
+    },
+    chair: {
+      img: 'images/dormchair.jpg',
+      title: '🪑 Dorm Chair',
+      price: '$10 · Slightly used',
+      description: 'Comfortable dorm chair. Lightly used, no tears.'
+    },
+    fridge: {
+      img: 'images/minifridge.jpg',
+      title: '🔌 Mini Fridge',
+      price: '$50 · Like new',
+      description: 'Perfect for dorms. Quiet and energy-efficient.'
+    }
+  };
+
+  function openModal(itemKey) {
+    const modal = document.getElementById('item-modal');
+    const data = modalData[itemKey];
+
+    document.getElementById('modal-img').src = data.img;
+    document.getElementById('modal-title').textContent = data.title;
+    document.getElementById('modal-price').textContent = data.price;
+    document.getElementById('modal-description').textContent = data.description;
+
+    modal.style.display = 'block';
+  }
+
+  function closeModal() {
+    document.getElementById('item-modal').style.display = 'none';
+  }
+
+  window.onclick = function(event) {
+    const modal = document.getElementById('item-modal');
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+<div id="item-modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img id="modal-img" src="" alt="Item Image" class="modal-img">
+    <h3 id="modal-title"></h3>
+    <p id="modal-price"></p>
+    <p id="modal-description"></p>
+    <button class="checkout-btn">🛒 Checkout</button>
+  </div>
+</div>
+</body>
+</html>
