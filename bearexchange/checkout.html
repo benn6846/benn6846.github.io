@@ -1,9 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Checkout - Campus Marketplace</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background-color: #f5f7fa;
+      color: #00274C;
+    }
+
+    .hero.small-hero {
+      background: #00274C;
+      color: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    .tagline {
+      font-weight: 400;
+      margin-top: 0.5rem;
+    }
+
+    .content {
+      max-width: 700px;
+      margin: 2rem auto;
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .form-section label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: 600;
+      color: #00274C;
+    }
+
+    .form-section input,
+    .form-section select,
+    .form-section textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 0.25rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+
+    .form-section textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    #checkout-items {
+      margin-top: 1rem;
+      padding: 1rem;
+      background-color: #f0f4f8;
+      border-radius: 8px;
+      color: #00274C;
+    }
+
+    button[type="submit"] {
+      background-color: #FFCB05;
+      color: #00274C;
+      border: none;
+      padding: 1rem;
+      margin-top: 2rem;
+      width: 100%;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #e6b800;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      background-color: #ffffff;
+      color: #888;
+      border-top: 1px solid #ddd;
+      margin-top: 3rem;
+    }
+  </style>
 </head>
 <body>
   <header class="hero small-hero">
@@ -21,21 +110,27 @@
       <label for="email">Email Address</label>
       <input type="email" id="email" name="email" required />
 
-      <div id="checkout-items"></div>
+      <div id="checkout-items">Loading cart items...</div>
       <input type="hidden" name="item" id="item" />
-      <input type="text" id="item" name="item" readonly />
+
       <label for="price">Price</label>
-      <input type="text" id="price" name="price" readonly /> 
+      <input type="text" id="price" name="price" readonly />
+
       <label for="pickup">Pickup Location</label>
       <input type="text" id="pickup" name="pickup" placeholder="e.g. Campus Library" required />
+
       <label for="date">Pickup Date</label>
       <input type="date" id="date" name="date" required />
+
       <label for="time">Pickup Time</label>
       <input type="time" id="time" name="time" required />
+
       <label for="phone">Phone Number</label>
       <input type="tel" id="phone" name="phone" placeholder="e.g. (123) 456-7890" required />
+
       <label for="notes">Additional Notes</label>
       <textarea id="notes" name="notes" placeholder="Any special instructions or requests"></textarea>
+
       <label for="method">Payment Method</label>
       <select id="method" name="method" required>
         <option value="">Choose one</option>
@@ -45,35 +140,36 @@
         <option value="cash">Cash on Pickup</option>
       </select>
 
-      <button type="submit">Confirm Purchase</button>
+      <button type="submit">✅ Confirm Purchase</button>
     </form>
   </main>
 
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const itemName = params.get("item");
-    if (itemName) {
-      document.getElementById("item").value = itemName;
-    }
-  </script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const cart = JSON.parse(localStorage.getItem("cart")) || [];
       const container = document.getElementById("checkout-items");
       const itemInput = document.getElementById("item");
-  
+      const priceInput = document.getElementById("price");
+
       if (cart.length === 0) {
         container.innerHTML = "<p>Your cart is empty.</p>";
+        priceInput.value = "$0.00";
       } else {
-        container.innerHTML = cart.map(item => `
-          <p>${item.name} - $${item.price}</p>
-        `).join('');
-  
-        // Save a string version of cart in a hidden input for confirmation page
+        const summary = cart.map(item => `${item.name} - $${item.price}`).join("<br>");
+        const totalPrice = cart.reduce((sum, item) => sum + Number(item.price), 0);
+
+        container.innerHTML = `
+          <h3>Your Items:</h3>
+          <p>${summary}</p>
+          <strong>Total: $${totalPrice.toFixed(2)}</strong>
+        `;
+
         itemInput.value = cart.map(item => item.name).join(", ");
+        priceInput.value = `$${totalPrice.toFixed(2)}`;
       }
     });
   </script>
+
   <footer>
     <p>&copy; 2025 Campus Marketplace · Built for students by students</p>
   </footer>
