@@ -21,9 +21,21 @@
       <label for="email">Email Address</label>
       <input type="email" id="email" name="email" required />
 
-      <label for="item">Item</label>
-      <input type="text" id="item" name="item" value="Mini Fridge" readonly />
-
+      <div id="checkout-items"></div>
+      <input type="hidden" name="item" id="item" />
+      <input type="text" id="item" name="item" readonly />
+      <label for="price">Price</label>
+      <input type="text" id="price" name="price" readonly /> 
+      <label for="pickup">Pickup Location</label>
+      <input type="text" id="pickup" name="pickup" placeholder="e.g. Campus Library" required />
+      <label for="date">Pickup Date</label>
+      <input type="date" id="date" name="date" required />
+      <label for="time">Pickup Time</label>
+      <input type="time" id="time" name="time" required />
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" placeholder="e.g. (123) 456-7890" required />
+      <label for="notes">Additional Notes</label>
+      <textarea id="notes" name="notes" placeholder="Any special instructions or requests"></textarea>
       <label for="method">Payment Method</label>
       <select id="method" name="method" required>
         <option value="">Choose one</option>
@@ -37,6 +49,31 @@
     </form>
   </main>
 
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const itemName = params.get("item");
+    if (itemName) {
+      document.getElementById("item").value = itemName;
+    }
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const container = document.getElementById("checkout-items");
+      const itemInput = document.getElementById("item");
+  
+      if (cart.length === 0) {
+        container.innerHTML = "<p>Your cart is empty.</p>";
+      } else {
+        container.innerHTML = cart.map(item => `
+          <p>${item.name} - $${item.price}</p>
+        `).join('');
+  
+        // Save a string version of cart in a hidden input for confirmation page
+        itemInput.value = cart.map(item => item.name).join(", ");
+      }
+    });
+  </script>
   <footer>
     <p>&copy; 2025 Campus Marketplace · Built for students by students</p>
   </footer>

@@ -31,8 +31,6 @@
    </div>
  </div>
 </nav>
-
-
  <header class="hero">
    <div class="overlay">
      <img src="images/UNCOBear.png" alt="University Logo" class="logo"/>
@@ -52,18 +50,20 @@
        <img src="images/Introtopschologyt.jpg" alt="Intro to Psychology Book" class="listing-img">
        <h3>📘 Intro to Psychology</h3>
        <p>$20 · Good condition</p>
+       <button id="buy-now-btn">Buy Now</button>
      </div>
      <div class="card">
        <img src="images/dormchair.jpg" alt="Dorm Chair" class="listing-img">
        <h3>🪑 Dorm Chair</h3>
        <p>$10 · Slightly used</p>
+       <button id="buy-now-btn">Buy Now</button>
      </div>
-
 
      <div class="card">
        <img src="images/minifridge.jpg" alt="Mini Fridge" class="listing-img">
        <h3>🔌 Mini Fridge</h3>
        <p>$50 · Like new</p>
+       <button id="buy-now-btn">Buy Now</button>
      </div>
    </div>
  </section>
@@ -104,6 +104,14 @@
      }
    });
  });
+</script>
+<script>
+  function addToCart(name, price, image) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push({ name, price, image });
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(`${name} added to cart!`);
+  }
 </script>
 </body>
 </html>

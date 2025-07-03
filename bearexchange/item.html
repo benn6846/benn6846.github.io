@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Item Details - Campus Marketplace</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero small-hero">
+    <div class="overlay">
+      <h1 id="item-name">Item Name</h1>
+    </div>
+  </header>
+
+  <main class="content">
+    <div class="item-details">
+      <img id="item-img" src="" alt="Item Image" class="listing-img" style="max-width: 300px;">
+      <p id="item-price"></p>
+      <p id="item-desc"></p>
+
+      <button id="add-to-cart-btn">Add to Cart</button>
+      <button id="buy-now-btn">Buy Now</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Campus Marketplace · Built for students by students</p>
+  </footer>
+
+  <script>
+    // Read values from URL parameters
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get("name");
+    const price = params.get("price");
+    const desc = params.get("desc");
+    const img = params.get("img");
+
+    // Populate the page
+    document.getElementById("item-name").textContent = name;
+    document.getElementById("item-price").textContent = `Price: $${price}`;
+    document.getElementById("item-desc").textContent = `Condition: ${desc}`;
+    document.getElementById("item-img").src = img;
+
+    // Add to Cart
+    document.getElementById("add-to-cart-btn").addEventListener("click", () => {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.push({ name, price, image: img });
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert(`${name} added to cart!`);
+    });
+
+    // Buy Now
+    document.getElementById("buy-now-btn").addEventListener("click", () => {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.push({ name, price, image: img });
+      localStorage.setItem("cart", JSON.stringify(cart));
+      window.location.href = "cart.html";
+    });
+  </script>
+</body>
+</html>

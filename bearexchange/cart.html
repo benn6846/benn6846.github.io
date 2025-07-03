@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Your Cart - Campus Marketplace</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero small-hero">
+    <div class="overlay">
+      <h1>🛒 Your Cart</h1>
+    </div>
+  </header>
+
+  <main class="content">
+    <div id="cart-container"></div>
+    <button onclick="goToCheckout()">Proceed to Checkout</button>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Campus Marketplace · Built for students by students</p>
+  </footer>
+
+  <script>
+    function displayCart() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const container = document.getElementById("cart-container");
+
+      if (cart.length === 0) {
+        container.innerHTML = "<p>Your cart is empty.</p>";
+        return;
+      }
+
+      container.innerHTML = cart.map((item, index) => `
+        <div class="card">
+          <img src="${item.image}" class="listing-img" style="max-width:150px;">
+          <h3>${item.name}</h3>
+          <p>$${item.price}</p>
+          <button onclick="removeItem(${index})">Remove</button>
+        </div>
+      `).join('');
+    }
+
+    function removeItem(index) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      displayCart(); // Refresh
+    }
+
+    function goToCheckout() {
+      window.location.href = "checkout.html";
+    }
+
+    document.addEventListener("DOMContentLoaded", displayCart);
+  </script>
+</body>
+</html>
