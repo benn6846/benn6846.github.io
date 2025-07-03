@@ -2,66 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Checkout</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Checkout - Campus Marketplace</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1>🛒 Checkout</h1>
+  <header class="hero small-hero">
+    <div class="overlay">
+      <h1>💳 Checkout</h1>
+      <p class="tagline">Complete your purchase below</p>
+    </div>
   </header>
-  <main>
-    <section class="checkout-details">
-      <h2>Item Details</h2>
-      <div class="item-summary">
-        <img id="item-image" src="" alt="Item Image" class="checkout-img">
-        <h3 id="item-name">Item Name</h3>
-        <p id="item-price">Item Price</p>
-      </div>
-    </section>
-    <section class="payment-section">
-      <h2>Payment Information</h2>
-      <form id="payment-form">
-        <label for="name">Name on Card:</label>
-        <input type="text" id="name" name="name" placeholder="John Doe" required>
-        
-        <label for="card-number">Card Number:</label>
-        <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456" required>
-        
-        <label for="expiry">Expiry Date:</label>
-        <input type="text" id="expiry" name="expiry" placeholder="MM/YY" required>
-        
-        <label for="cvv">CVV:</label>
-        <input type="text" id="cvv" name="cvv" placeholder="123" required>
-        
-        <button type="submit" class="confirm-btn">Confirm Purchase</button>
-      </form>
-    </section>
+
+  <main class="content">
+    <form class="form-section" action="thankyou.html" method="GET">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="item">Item</label>
+      <input type="text" id="item" name="item" value="Mini Fridge" readonly />
+
+      <label for="method">Payment Method</label>
+      <select id="method" name="method" required>
+        <option value="">Choose one</option>
+        <option value="venmo">Venmo</option>
+        <option value="cashapp">Cash App</option>
+        <option value="zelle">Zelle</option>
+        <option value="cash">Cash on Pickup</option>
+      </select>
+
+      <button type="submit">Confirm Purchase</button>
+    </form>
   </main>
+
   <footer>
     <p>&copy; 2025 Campus Marketplace · Built for students by students</p>
   </footer>
-  <script>
-    // Populate item details dynamically
-    document.addEventListener("DOMContentLoaded", () => {
-      const urlParams = new URLSearchParams(window.location.search);
-      const itemName = urlParams.get("name");
-      const itemPrice = urlParams.get("price");
-      const itemImage = urlParams.get("image");
-
-      // Dynamically set item details
-      document.getElementById("item-name").textContent = itemName;
-      document.getElementById("item-price").textContent = itemPrice;
-      document.getElementById("item-image").src = itemImage;
-
-      // Handle form submission
-      const paymentForm = document.getElementById("payment-form");
-      paymentForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        alert(`Thank you for purchasing ${itemName}!`);
-        window.location.href = "thank-you.html"; // Redirect to a thank-you page
-      });
-    });
-  </script>
 </body>
 </html>
