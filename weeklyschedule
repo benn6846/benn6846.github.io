@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Moise Bennett — Weekly Schedule</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0a0f1e; color: #e2e8f0; min-height: 100vh; }
+
+  /* HEADER */
+  .header { background: linear-gradient(135deg, #0f2744 0%, #0a0f1e 100%); padding: 24px 20px 16px; border-bottom: 1px solid #1e3a5f; }
+  .header-eyebrow { font-size: 10px; letter-spacing: 3px; color: #60a5fa; text-transform: uppercase; margin-bottom: 4px; }
+  .header-title { font-size: 22px; font-weight: 800; color: #f0f9ff; margin-bottom: 2px; }
+  .header-sub { font-size: 12px; color: #64748b; margin-bottom: 14px; }
+  .stats { display: flex; gap: 10px; flex-wrap: wrap; }
+  .stat-box { background: rgba(255,255,255,0.05); border-radius: 8px; padding: 8px 14px; }
+  .stat-label { font-size: 10px; color: #475569; margin-bottom: 2px; }
+  .stat-val { font-size: 14px; font-weight: 700; }
+
+  /* TABS */
+  .tabs { display: flex; overflow-x: auto; border-bottom: 1px solid #1e293b; background: #0d1526; }
+  .tab-btn { flex: 0 0 auto; padding: 12px 14px 10px; background: transparent; border: none;
+    border-bottom: 2px solid transparent; cursor: pointer; color: #64748b; min-width: 78px;
+    transition: all 0.15s; text-align: center; }
+  .tab-btn.active { background: #1e3a5f; border-bottom: 2px solid #3b82f6; color: #f0f9ff; }
+  .tab-short { font-size: 11px; font-weight: 700; letter-spacing: 1px; }
+  .tab-hrs { font-size: 10px; color: #374151; margin-top: 2px; }
+  .tab-btn.active .tab-hrs { color: #86efac; }
+  .tab-progress { font-size: 9px; color: #374151; margin-top: 1px; }
+
+  /* DAY VIEW */
+  .day-view { padding: 16px 16px 32px; }
+  .day-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
+  .day-title { font-size: 18px; font-weight: 800; color: #f0f9ff; }
+  .day-sub { font-size: 12px; color: #64748b; margin-top: 2px; }
+  .day-badge { background: #052e16; border: 1px solid #16a34a; border-radius: 20px;
+    padding: 6px 14px; font-size: 13px; font-weight: 700; color: #86efac; white-space: nowrap; }
+
+  /* BLOCKS */
+  .blocks { display: flex; flex-direction: column; gap: 6px; }
+  .block { display: flex; align-items: center; gap: 12px; border-radius: 10px;
+    padding: 11px 14px; cursor: pointer; transition: all 0.15s; border: 1px solid; }
+  .block.done { opacity: 0.55; }
+  .block-check { width: 20px; height: 20px; border-radius: 5px; flex-shrink: 0;
+    border: 2px solid; display: flex; align-items: center; justify-content: center;
+    font-size: 12px; color: #fff; transition: all 0.15s; }
+  .block-check.checked { background: #0d9488; border-color: #0d9488; }
+  .block-info { flex: 1; }
+  .block-label { font-size: 13px; font-weight: 600; transition: all 0.15s; }
+  .block.done .block-label { text-decoration: line-through; color: #5eead4 !important; }
+  .block-cert { font-size: 11px; color: #16a34a; margin-top: 2px; }
+  .block-tag { font-size: 10px; font-weight: 700; border-radius: 4px; padding: 2px 8px; text-transform: uppercase; }
+
+  /* COURSERA BREAKDOWN */
+  .breakdown { margin-top: 24px; background: #0d1a0d; border: 1px solid #166534; border-radius: 12px; padding: 16px; }
+  .breakdown-title { font-size: 12px; font-weight: 700; color: #86efac; margin-bottom: 12px; letter-spacing: 1px; text-transform: uppercase; }
+  .breakdown-days { display: flex; gap: 8px; flex-wrap: wrap; }
+  .breakdown-day { border-radius: 8px; padding: 8px 12px; min-width: 68px; text-align: center; border: 1px solid; }
+  .breakdown-day-name { font-size: 10px; color: #4ade80; font-weight: 700; }
+  .breakdown-day-hrs { font-size: 15px; font-weight: 800; margin-top: 2px; }
+  .breakdown-total { margin-top: 12px; font-size: 12px; color: #4ade80; }
+
+  /* TIP */
+  .tip { margin-top: 12px; background: #1a1200; border: 1px solid #92400e; border-radius: 10px; padding: 12px 14px; font-size: 12px; color: #fbbf24; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-eyebrow">Moise Bennett · UNC Track &amp; Field</div>
+  <div class="header-title">Weekly Study &amp; Life Schedule</div>
+  <div class="header-sub">Google IT Support Cert · In-person class Thu only · ~19.5 hrs Coursera/week</div>
+  <div class="stats">
+    <div class="stat-box"><div class="stat-label">Coursera/Week</div><div class="stat-val" style="color:#86efac">19.5 hrs</div></div>
+    <div class="stat-box"><div class="stat-label">Hours Left</div><div class="stat-val" style="color:#fbbf24">~92 hrs</div></div>
+    <div class="stat-box"><div class="stat-label">Weeks to Finish</div><div class="stat-val" style="color:#60a5fa">~5 weeks</div></div>
+    <div class="stat-box"><div class="stat-label">In-Person Class</div><div class="stat-val" style="color:#c4b5fd">Thu 3:30 PM</div></div>
+  </div>
+</div>
+
+<div class="tabs" id="tabs"></div>
+
+<div class="day-view">
+  <div class="day-header">
+    <div>
+      <div class="day-title" id="dayTitle">Monday</div>
+      <div class="day-sub" id="daySub"></div>
+    </div>
+    <div class="day-badge" id="dayBadge"></div>
+  </div>
+  <div class="blocks" id="blocks"></div>
+  <div class="breakdown">
+    <div class="breakdown-title">📗 Weekly Coursera Breakdown</div>
+    <div class="breakdown-days" id="breakdownDays"></div>
+    <div class="breakdown-total">Total: <strong style="color:#86efac">19.5 hrs/week</strong> → finish in ~5 weeks 🎯</div>
+  </div>
+  <div class="tip">💡 <strong>Online classes are flexible</strong> — do them during lower-energy windows (late morning) and save your sharp morning brain for Coursera.</div>
+</div>
+
+<script>
+const DAYS = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+const SHORT = ["MON","TUE","WED","THU","FRI","SAT","SUN"];
+
+const TYPES = {
+  morning:  { label:"Morning",      bg:"#422006", text:"#fbbf24", border:"#92400e" },
+  online:   { label:"Online Class", bg:"#0c2340", text:"#7dd3fc", border:"#0369a1" },
+  inperson: { label:"In-Person",    bg:"#1e3a5f", text:"#bfdbfe", border:"#3b82f6" },
+  practice: { label:"Practice",     bg:"#450a0a", text:"#fca5a5", border:"#dc2626" },
+  hw:       { label:"Homework",     bg:"#2e1065", text:"#c4b5fd", border:"#7c3aed" },
+  coursera: { label:"Coursera",     bg:"#052e16", text:"#86efac", border:"#16a34a" },
+  rec:      { label:"Rec Job",      bg:"#431407", text:"#fdba74", border:"#d97706" },
+  meal:     { label:"Meals",        bg:"#1a0a2e", text:"#e879f9", border:"#a21caf" },
+  free:     { label:"Free",         bg:"#0f2027", text:"#5eead4", border:"#0d9488" },
+  wind:     { label:"Wind Down",    bg:"#1e293b", text:"#94a3b8", border:"#334155" },
+};
+
+const SCHEDULE = {
+  Monday: {
+    sub: "Online Classes (flexible) · Practice + Weights 2:30–6:30 PM",
+    courseraHrs: 3,
+    blocks: [
+      {type:"morning",  label:"7:00 AM — Wake Up + Breakfast"},
+      {type:"coursera", label:"8:00 AM — Coursera (1.5 hrs) 🔥 Morning Block", cert:1.5},
+      {type:"online",   label:"9:30 AM — Online Classes (flexible, do at your pace)"},
+      {type:"meal",     label:"12:00 PM — Lunch"},
+      {type:"hw",       label:"12:30 PM — Homework (1–2 hrs)"},
+      {type:"practice", label:"2:30 PM — Practice + Weights (ends ~6:30)"},
+      {type:"meal",     label:"6:30 PM — Dinner"},
+      {type:"coursera", label:"7:00 PM — Coursera (1.5 hrs)", cert:1.5},
+      {type:"hw",       label:"8:30 PM — HW Review / Catch-up"},
+      {type:"wind",     label:"10:00 PM — Wind Down → Sleep"},
+    ]
+  },
+  Tuesday: {
+    sub: "Online Classes (flexible) · Practice 2:30–4 PM · Rec Job 6:45–9 PM",
+    courseraHrs: 2.5,
+    blocks: [
+      {type:"morning",  label:"7:00 AM — Wake Up + Breakfast"},
+      {type:"coursera", label:"8:00 AM — Coursera (1.5 hrs) 🔥 Morning Block", cert:1.5},
+      {type:"online",   label:"9:30 AM — Online Classes (flexible)"},
+      {type:"meal",     label:"12:00 PM — Lunch"},
+      {type:"hw",       label:"12:30 PM — Homework (1–2 hrs)"},
+      {type:"practice", label:"2:30 PM — Practice (ends ~4 PM)"},
+      {type:"coursera", label:"4:00 PM — Coursera (1 hr)", cert:1},
+      {type:"meal",     label:"5:30 PM — Dinner + Prep for Rec Job"},
+      {type:"rec",      label:"6:45 PM — Rec Job (ends 9 PM or earlier)"},
+      {type:"hw",       label:"9:00 PM — HW if home early, else wind down"},
+      {type:"wind",     label:"10:00 PM — Wind Down → Sleep"},
+    ]
+  },
+  Wednesday: {
+    sub: "Online Classes (flexible) · Practice + Weights 2:30–6:30 PM",
+    courseraHrs: 3,
+    blocks: [
+      {type:"morning",  label:"7:00 AM — Wake Up + Breakfast"},
+      {type:"coursera", label:"8:00 AM — Coursera (1.5 hrs) 🔥 Morning Block", cert:1.5},
+      {type:"online",   label:"9:30 AM — Online Classes (flexible)"},
+      {type:"meal",     label:"12:00 PM — Lunch"},
+      {type:"hw",       label:"12:30 PM — Homework (1–2 hrs)"},
+      {type:"practice", label:"2:30 PM — Practice + Weights (ends ~6:30)"},
+      {type:"meal",     label:"6:30 PM — Dinner"},
+      {type:"coursera", label:"7:00 PM — Coursera (1.5 hrs)", cert:1.5},
+      {type:"hw",       label:"8:30 PM — HW Review"},
+      {type:"wind",     label:"10:00 PM — Wind Down → Sleep"},
+    ]
+  },
+  Thursday: {
+    sub: "In-Person Class 3:30–4:45 PM · Best Study Day (morning completely free)",
+    courseraHrs: 4,
+    blocks: [
+      {type:"morning",  label:"7:00 AM — Wake Up + Breakfast"},
+      {type:"coursera", label:"8:00 AM — Coursera (1.5 hrs) 🔥 Power Block", cert:1.5},
+      {type:"coursera", label:"9:30 AM — Coursera (1.5 hrs) 🔥", cert:1.5},
+      {type:"meal",     label:"11:00 AM — Lunch / Break"},
+      {type:"hw",       label:"11:30 AM — Homework (1–2 hrs)"},
+      {type:"free",     label:"1:30 PM — Rest / Errands / Nap"},
+      {type:"inperson", label:"3:30 PM — In-Person Class (3:30–4:45 PM)"},
+      {type:"coursera", label:"5:00 PM — Coursera (1 hr)", cert:1},
+      {type:"meal",     label:"6:00 PM — Dinner"},
+      {type:"free",     label:"7:00 PM — Free / Relax"},
+      {type:"hw",       label:"8:00 PM — Light HW / Review"},
+      {type:"wind",     label:"9:30 PM — Wind Down → Sleep"},
+    ]
+  },
+  Friday: {
+    sub: "Online Classes (flexible) · Practice 2:30–4 PM",
+    courseraHrs: 3.5,
+    blocks: [
+      {type:"morning",  label:"7:00 AM — Wake Up + Breakfast"},
+      {type:"coursera", label:"8:00 AM — Coursera (1.5 hrs) 🔥 Morning Block", cert:1.5},
+      {type:"online",   label:"9:30 AM — Online Classes (flexible)"},
+      {type:"meal",     label:"12:00 PM — Lunch"},
+      {type:"hw",       label:"12:30 PM — Homework (1–2 hrs)"},
+      {type:"practice", label:"2:30 PM — Practice (ends ~4 PM)"},
+      {type:"coursera", label:"4:00 PM — Coursera (1 hr)", cert:1},
+      {type:"meal",     label:"5:30 PM — Dinner"},
+      {type:"coursera", label:"7:00 PM — Coursera (1 hr)", cert:1},
+      {type:"hw",       label:"8:00 PM — HW / Prep for Weekend"},
+      {type:"wind",     label:"10:00 PM — Wind Down → Sleep"},
+    ]
+  },
+  Saturday: {
+    sub: "Athlete Recovery + Big Coursera Morning Block",
+    courseraHrs: 3.5,
+    blocks: [
+      {type:"free",     label:"7:00 AM — Sleep In / Athlete Recovery"},
+      {type:"meal",     label:"9:00 AM — Breakfast"},
+      {type:"coursera", label:"10:00 AM — Coursera (2 hrs) 🔥 Big Block", cert:2},
+      {type:"coursera", label:"12:00 PM — Coursera (1.5 hrs)", cert:1.5},
+      {type:"meal",     label:"1:30 PM — Lunch"},
+      {type:"free",     label:"2:30 PM — Free Time / Social / Errands"},
+      {type:"meal",     label:"6:00 PM — Dinner"},
+      {type:"free",     label:"7:00 PM — Relax / Social / Self Care"},
+      {type:"wind",     label:"10:00 PM — Wind Down → Sleep"},
+    ]
+  },
+  Sunday: {
+    sub: "Full Rest & Weekly Reset — you earned it",
+    courseraHrs: 0,
+    blocks: [
+      {type:"free",  label:"7:00 AM — Rest / Recovery"},
+      {type:"meal",  label:"9:00 AM — Breakfast"},
+      {type:"free",  label:"10:00 AM — Free / Church / Family / Chill"},
+      {type:"meal",  label:"12:00 PM — Lunch"},
+      {type:"free",  label:"1:00 PM — Free Time"},
+      {type:"hw",    label:"3:00 PM — Weekly HW Catch-up / Prep for Monday"},
+      {type:"meal",  label:"6:00 PM — Dinner"},
+      {type:"free",  label:"7:00 PM — Relax / Social"},
+      {type:"wind",  label:"9:30 PM — Early Wind Down (big week ahead)"},
+      {type:"wind",  label:"10:30 PM — Sleep"},
+    ]
+  },
+};
+
+const COURSERA_HRS = { Monday:3, Tuesday:2.5, Wednesday:3, Thursday:4, Friday:3.5, Saturday:3.5, Sunday:0 };
+
+// State
+let activeDay = "Monday";
+let checked = {}; // key: "Day-index" -> bool
+
+function getKey(day, i) { return day + "-" + i; }
+
+// Build tabs
+function renderTabs() {
+  const container = document.getElementById("tabs");
+  container.innerHTML = "";
+  DAYS.forEach((day, i) => {
+    const hrs = COURSERA_HRS[day];
+    const total = SCHEDULE[day].blocks.length;
+    const done = SCHEDULE[day].blocks.filter((_, idx) => checked[getKey(day, idx)]).length;
+    const btn = document.createElement("button");
+    btn.className = "tab-btn" + (day === activeDay ? " active" : "");
+    btn.innerHTML = `
+      <div class="tab-short">${SHORT[i]}</div>
+      ${hrs > 0 ? `<div class="tab-hrs">📗 ${hrs}h</div>` : `<div class="tab-hrs">—</div>`}
+      <div class="tab-progress">${done}/${total}</div>
+    `;
+    btn.onclick = () => { activeDay = day; render(); };
+    container.appendChild(btn);
+  });
+}
+
+// Build blocks
+function renderBlocks() {
+  const data = SCHEDULE[activeDay];
+  document.getElementById("dayTitle").textContent = activeDay;
+  document.getElementById("daySub").textContent = data.sub;
+
+  const badge = document.getElementById("dayBadge");
+  if (data.courseraHrs > 0) {
+    badge.textContent = "📗 " + data.courseraHrs + " hrs";
+    badge.style.display = "block";
+  } else {
+    badge.style.display = "none";
+  }
+
+  const container = document.getElementById("blocks");
+  container.innerHTML = "";
+
+  data.blocks.forEach((block, i) => {
+    const t = TYPES[block.type];
+    const key = getKey(activeDay, i);
+    const done = !!checked[key];
+
+    const div = document.createElement("div");
+    div.className = "block" + (done ? " done" : "");
+    div.style.background = done ? "#0f2027" : t.bg;
+    div.style.borderColor = done ? "#0d9488" : t.border;
+
+    const checkDiv = document.createElement("div");
+    checkDiv.className = "block-check" + (done ? " checked" : "");
+    checkDiv.style.borderColor = done ? "#0d9488" : t.border;
+    checkDiv.textContent = done ? "✓" : "";
+
+    const infoDiv = document.createElement("div");
+    infoDiv.className = "block-info";
+
+    const labelDiv = document.createElement("div");
+    labelDiv.className = "block-label";
+    labelDiv.style.color = done ? "#5eead4" : t.text;
+    labelDiv.textContent = block.label;
+
+    infoDiv.appendChild(labelDiv);
+
+    if (block.cert && !done) {
+      const certDiv = document.createElement("div");
+      certDiv.className = "block-cert";
+      certDiv.textContent = "✦ " + block.cert + " hr" + (block.cert !== 1 ? "s" : "") + " toward certificate";
+      infoDiv.appendChild(certDiv);
+    }
+
+    const tagDiv = document.createElement("div");
+    tagDiv.className = "block-tag";
+    tagDiv.style.color = t.border;
+    tagDiv.style.background = t.border + "33";
+    tagDiv.textContent = t.label;
+
+    div.appendChild(checkDiv);
+    div.appendChild(infoDiv);
+    div.appendChild(tagDiv);
+
+    div.onclick = () => {
+      checked[key] = !checked[key];
+      render();
+    };
+
+    container.appendChild(div);
+  });
+}
+
+// Build breakdown
+function renderBreakdown() {
+  const container = document.getElementById("breakdownDays");
+  container.innerHTML = "";
+  DAYS.forEach(day => {
+    const hrs = COURSERA_HRS[day];
+    const isActive = day === activeDay;
+    const div = document.createElement("div");
+    div.className = "breakdown-day";
+    div.style.background = isActive ? "#052e16" : "#0a150a";
+    div.style.borderColor = isActive ? "#16a34a" : "#134e13";
+    div.innerHTML = `
+      <div class="breakdown-day-name">${day.slice(0,3).toUpperCase()}</div>
+      <div class="breakdown-day-hrs" style="color:${hrs > 0 ? '#86efac' : '#374151'}">${hrs > 0 ? hrs + "h" : "—"}</div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function render() {
+  renderTabs();
+  renderBlocks();
+  renderBreakdown();
+}
+
+render();
+</script>
+</body>
+</html>
